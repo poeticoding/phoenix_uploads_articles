@@ -1,0 +1,26 @@
+<%# lib/poetic_web/templates/upload %>
+<table class="table">
+	<thead>
+		<th>ID</th>
+		<th>Filename</th>
+		<th>Size</th>
+		<th>Type</th>
+		<th>Time</th>
+	</thead>
+	<tbody>
+		
+		<%= for upload <- @uploads do %>
+			<tr>
+				<td><%= upload.id %></td>
+				<td><%= upload.filename %></td>
+				<td><%= upload.size %></td>
+				<td><%= upload.content_type %></td>
+				<td><%= upload.inserted_at %></td>
+				<td>
+					<%= link "download", to: Routes.upload_path(@conn, :show, upload.id) %>
+				</td>
+			</tr>
+		<% end %>
+		
+	</tbody>
+</table>
