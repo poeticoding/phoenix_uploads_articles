@@ -1,20 +1,7 @@
-# Poetic
 
-To start your Phoenix server:
+## [Step-by-Step Tutorial to Build a Phoenix App that Supports User Uploads](https://www.poeticoding.com/step-by-step-tutorial-to-build-a-phoenix-app-that-supports-user-uploads)
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+![phoenix uploads](https://1o6jjh24p1t92lcqci49qg8a-wpengine.netdna-ssl.com/wp-content/uploads/2019/04/phoenix_uploads.jpg)
+ 
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+In this step-by-step tutorial we see in depth how to build a Phoenix app from scratch, letting users upload their files using a multipart form. We learn how to easily run PostgreSQL with Docker, to receive uploads using Plug, and how to use Ecto to store upload details into the database.
