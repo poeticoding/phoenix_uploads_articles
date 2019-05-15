@@ -1,6 +1,6 @@
-<%# lib/poetic_web/templates/upload %>
 <table class="table">
 	<thead>
+		<th>Thumbnail</th>
 		<th>ID</th>
 		<th>Filename</th>
 		<th>Size</th>
@@ -11,6 +11,14 @@
 		
 		<%= for upload <- @uploads do %>
 			<tr>
+				<td>
+					<%= if upload.thumbnail? do 
+						img_tag Routes.upload_thumbnail_path(@conn, :thumbnail, upload.id), 
+							class: "image"
+					else
+						img_tag "/images/generic_thumbnail.jpg", class: "image"
+					end %>
+				</td>
 				<td><%= upload.id %></td>
 				<td><%= upload.filename %></td>
 				<td><%= upload.size %></td>

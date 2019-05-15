@@ -31,7 +31,10 @@ defmodule Poetic.Documents do
 				 		content_type: content_type,
 				 		hash: hash, size: size
 				 	}) |> Repo.insert(),
-				 :ok <- File.cp(tmp_path, Upload.local_path(upload.id, filename))
+
+				 :ok <- File.cp(tmp_path, Upload.local_path(upload.id, filename)),
+
+				 {:ok, upload} <- Upload.create_thumbnail(upload) |> Repo.update()
 			do 
 				upload
 			else

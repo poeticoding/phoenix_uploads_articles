@@ -32,4 +32,12 @@ defmodule PoeticWeb.UploadController do
     local_path = Upload.local_path(upload.id, upload.filename)
     send_download conn, {:file, local_path}, filename: upload.filename
   end
+
+  def thumbnail(conn, %{"upload_id" => id}) do
+    thumb_path = Upload.thumbnail_path(id)
+    conn
+    |> put_resp_content_type("image/jpeg")
+    |> send_file(200, thumb_path)
+  end
+
 end
