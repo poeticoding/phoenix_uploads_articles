@@ -5,7 +5,7 @@ function handleProgressEvent(progressEvent) {
     console.log(progressEvent);
 }
 
-function startUpload(formData) {
+function startUpload(formData, $form) {
     jQuery.ajax({
         type: 'POST',
         url: '/uploads',
@@ -33,10 +33,11 @@ function startUpload(formData) {
 }
 
 jQuery(document).ready(function ($) {
-
-    $("#upload_form").submit(function (event) {
+    let $form = $("#upload_form");
+    
+    $form.submit(function (event) {
         let formData = new FormData(this);
-        startUpload(formData);
+        startUpload(formData, $form);
 
         event.preventDefault();
     })
