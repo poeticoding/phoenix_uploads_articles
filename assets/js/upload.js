@@ -1,9 +1,18 @@
 import jQuery from "jquery"
 
+function createProgressHandler($form) {
+    let $label = $form.find("label.progress-percentage");
 
-function handleProgressEvent(progressEvent) {
-    console.log(progressEvent);
+    return function handleProgressEvent(progressEvent) {
+        let progress = progressEvent.loaded / progressEvent.total,
+            percentage = progress * 100,
+            percentageStr = `${percentage.toFixed(2)}%`; //xx.xx%
+            
+        $label.text(percentageStr);
+    }
 }
+
+
 
 function startUpload(formData, $form) {
     jQuery.ajax({
@@ -14,7 +23,7 @@ function startUpload(formData, $form) {
         xhr: function () {
             let xhr = jQuery.ajaxSettings.xhr();
             if (xhr.upload) {
-                xhr.upload.addEventListener('progress', handleProgressEvent, false);
+                xhr.upload.addEventListener('progress', createProgressHandler($form), false);
             }
             return xhr;
         },

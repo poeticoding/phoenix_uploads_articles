@@ -3,4 +3,8 @@
 	<%= file_input f, :upload, class: "form-control" %>
 	<%= submit "Upload", class: "btn btn-primary" %>
 
+    <div class="upload-progress">
+        <p>Upload progress: <label class="progress-percentage">0%</label></p>
+    </div>
+
 <% end %>
