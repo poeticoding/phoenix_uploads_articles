@@ -4,7 +4,8 @@
 	<%= submit "Upload", class: "btn btn-primary" %>
 
     <div class="upload-progress">
-        <p>Upload progress: <label class="progress-percentage">0%</label></p>
+        <progress max="100" value="0"></progress>
+		<label class="progress-percentage">70%</label>
     </div>
 
 <% end %>

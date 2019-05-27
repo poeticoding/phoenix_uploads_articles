@@ -1,20 +1,29 @@
 import jQuery from "jquery"
 
+
 function createProgressHandler($form) {
-    let $label = $form.find("label.progress-percentage");
+    let $progress = $form.find("progress"),
+        $label = $form.find("label.progress-percentage");
 
     return function handleProgressEvent(progressEvent) {
         let progress = progressEvent.loaded / progressEvent.total,
             percentage = progress * 100,
             percentageStr = `${percentage.toFixed(2)}%`; //xx.xx%
-            
-        $label.text(percentageStr);
+        
+        $label.text(percentageStr)
+        
+        $progress
+        .attr("max", progressEvent.total)
+        .attr("value", progressEvent.loaded);
     }
 }
 
 
 
 function startUpload(formData, $form) {
+    let $progress = $form.find("progress");
+    $progress.show()
+
     jQuery.ajax({
         type: 'POST',
         url: '/uploads',
@@ -32,7 +41,7 @@ function startUpload(formData, $form) {
         contentType: false,
 
         success: function (data) {
-            console.log("SUCCESS", data)
+            window.location = "/uploads"
         },
 
         error: function (data) {
@@ -43,7 +52,7 @@ function startUpload(formData, $form) {
 
 jQuery(document).ready(function ($) {
     let $form = $("#upload_form");
-    
+        
     $form.submit(function (event) {
         let formData = new FormData(this);
         startUpload(formData, $form);
