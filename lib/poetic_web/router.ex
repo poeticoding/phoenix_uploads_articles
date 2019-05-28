@@ -18,7 +18,7 @@ defmodule PoeticWeb.Router do
 
     get "/", PageController, :index
 
-    resources "/uploads", UploadController, only: [:index, :new, :create, :show] do
+    resources "/uploads", UploadController, only: [:index, :create, :show] do
       get "/thumbnail", UploadController, :thumbnail, as: "thumbnail"
     end
   end

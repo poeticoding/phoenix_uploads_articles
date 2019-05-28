@@ -1,3 +1,5 @@
+<%= PoeticWeb.UploadView.render("upload_form.html", conn: @conn) %>
+
 <table class="table">
 	<thead>
 		<th>Thumbnail</th>

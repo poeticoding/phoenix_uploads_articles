@@ -9,9 +9,6 @@ defmodule PoeticWeb.UploadController do
   	render(conn, "index.html", uploads: uploads)
   end
 
-  def new(conn, _params) do
-    render(conn, "new.html")
-  end
 
   def create(conn, %{"upload" => %Plug.Upload{}=upload}) do
   	case Documents.create_upload_from_plug_upload(upload) do
@@ -26,7 +23,7 @@ defmodule PoeticWeb.UploadController do
   	end
   end
 
-  
+
   def show(conn, %{"id" => id}) do
     upload = Documents.get_upload!(id)
     local_path = Upload.local_path(upload.id, upload.filename)

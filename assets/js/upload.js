@@ -51,13 +51,20 @@ function startUpload(formData, $form) {
 }
 
 jQuery(document).ready(function ($) {
-    let $form = $("#upload_form");
-        
+    let $form = $("#upload_form"),
+        $fileInput = $form.find("input[type='file']");
+    
     $form.submit(function (event) {
         let formData = new FormData(this);
         startUpload(formData, $form);
 
         event.preventDefault();
     })
+
+    $fileInput.on("change", function (e) {
+        $form.trigger("submit");
+    });
+
+
 })
 

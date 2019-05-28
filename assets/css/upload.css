@@ -4,7 +4,7 @@
 
 
 progress {
-    /* display: none; */
+    display: none;
     position:relative;
     width: 100%;
     height: 25px;
@@ -31,4 +31,19 @@ label.progress-percentage {
     color: white;
     font-weight: bold;
     text-shadow: 1px 1px 1px #444;
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.upload-btn-wrapper input[type=file] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
