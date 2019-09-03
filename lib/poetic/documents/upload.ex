@@ -2,7 +2,9 @@ defmodule Poetic.Documents.Upload do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @upload_directory Application.get_env(:poetic, :uploads_directory)
+  def upload_directory do
+    Application.get_env(:poetic, :uploads_directory)
+  end 
 
   schema "uploads" do
     field :content_type, :string
@@ -33,13 +35,13 @@ defmodule Poetic.Documents.Upload do
   end
 
   def local_path(id, filename) do
-    [@upload_directory, "#{id}-#{filename}"]
+    [upload_directory(), "#{id}-#{filename}"]
     |> Path.join()
   end
 
 
   def thumbnail_path(id) do
-    [@upload_directory, "thumb-#{id}.jpg"]
+    [upload_directory(), "thumb-#{id}.jpg"]
     |> Path.join()
   end
 
